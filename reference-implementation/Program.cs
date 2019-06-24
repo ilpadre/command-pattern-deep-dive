@@ -36,7 +36,7 @@ namespace reference_implementation
     /// </summary>
     abstract class Command
     {
-        protected Receiver receiver;
+        protected Receiver receiver { get; set; }
 
         public Command(Receiver receiver)
         {
@@ -79,7 +79,7 @@ namespace reference_implementation
     /// </summary>
     class Invoker
     {
-        private Command _command;
+        private Command _command { set; get; }
 
         public void SetCommand(Command command)
         {

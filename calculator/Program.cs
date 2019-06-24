@@ -15,7 +15,6 @@ namespace calculator
         static void Main()
         {
             // Create user and let her compute
-
             User user = new User();
 
             // User presses calculator buttons
@@ -55,25 +54,16 @@ namespace calculator
         private Calculator _calculator;
 
 
-        public CalculatorCommand(Calculator calculator,
-          char @operator, int operand)
+        public CalculatorCommand(
+            Calculator calculator,
+            char @operator, 
+            int operand)
         {
             this._calculator = calculator;
             this._operator = @operator;
             this._operand = operand;
         }
 
-        // Gets operator
-        public char Operator
-        {
-            set { _operator = value; }
-        }
-
-        // Get operand
-        public int Operand
-        {
-            set { _operand = value; }
-        }
 
         // Execute new command
         public override void Execute()
@@ -97,9 +87,7 @@ namespace calculator
                 case '*': return '/';
                 case '/': return '*';
                 default:
-                    throw new
-
-            ArgumentException("@operator");
+                    throw new ArgumentException("@operator");
             }
         }
     }
@@ -144,7 +132,7 @@ namespace calculator
 
             for (int i = 0; i < levels; i++)
             {
-                if (_current < _commands.Count - 1)
+                if (_current <= _commands.Count - 1)
                 {
                     Command command = _commands[_current++];
                     command.Execute();
